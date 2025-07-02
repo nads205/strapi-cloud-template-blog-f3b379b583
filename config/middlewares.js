@@ -6,9 +6,11 @@ module.exports = [
       enabled: true,
       header: '*',
       origin: [
-        'https://students.plaincc.com',
-        'http://localhost:3000', // for local development
-        'https://blpdepuo.gensparkspace.com' // for testing
+        'https://students.plaincc.com',        // Your production site
+        'http://localhost:3000',              // Local development
+        'https://blpdepuo.gensparkspace.com', // Testing
+        'https://npoaosyd.gensparkspace.com', // Latest test version
+        'https://slxvhrfi.gensparkspace.com'  // Video version test
       ]
     }
   },
