@@ -1,7 +1,7 @@
 module.exports = ({ env }) => ({
   email: {
     config: {
-      provider: '@strapi/provider-email-nodemailer',
+      provider: 'nodemailer',
       providerOptions: {
         host: env('MAILERSEND_SMTP_HOST', 'smtp.mailersend.net'),
         port: env('MAILERSEND_SMTP_PORT', 587),
