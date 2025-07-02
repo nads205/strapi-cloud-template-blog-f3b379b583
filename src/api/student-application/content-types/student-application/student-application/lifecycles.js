@@ -32,12 +32,33 @@ module.exports = {
         `,
       });
 
-      // Send notification email to admin
+       // Send notification email to admin
       await strapi.plugins['email'].services.email.send({
-        to: 'naadir@plaincc.co.uk', // Replace with your actual email
+        to: 'naadir@plaincc.co.uk',
         subject: `New Application - ${result.student_name}`,
         html: `
           <h2>New Student Application Received</h2>
           <h3>Student Details:</h3>
           <ul>
             <li><strong>Name:</strong> ${result.student_name}</li>
+            <li><strong>Email:</strong> ${result.email}</li>
+            <li><strong>Phone:</strong> ${result.phone || 'Not provided'}</li>
+            <li><strong>School:</strong> ${result.school_name}</li>
+            <li><strong>Year Level:</strong> ${result.year_level}</li>
+            <li><strong>Emergency Contact:</strong> ${result.emergency_contact_name} (${result.emergency_contact_phone})</li>
+          </ul>
+          <h3>Application Content:</h3>
+          <p><strong>Previous Experience:</strong><br>${result.previous_experience || 'None provided'}</p>
+          <p><strong>Interest Reason:</strong><br>${result.interest_reason}</p>
+          <p><strong>Preferred Dates:</strong> ${result.preferred_dates || 'None specified'}</p>
+          <p><a href="https://lively-cactus-806ba46df7.strapiapp.com/admin/content-manager/collection-types/api::student-application.student-application">View in Admin Panel</a></p>
+        `,
+      });
+
+      console.log('Emails sent successfully for application:', result.id);
+
+    } catch (error) {
+      console.error('Failed to send emails:', error);
+    }
+  },
+};
