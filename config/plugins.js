@@ -7,8 +7,8 @@ module.exports = ({ env }) => ({
         port: 587,
         secure: false,
         auth: {
-          user: env('MAILERSEND_SMTP_USER'),    // Add this to Strapi Cloud env vars
-          pass: env('MAILERSEND_SMTP_PASS'),    // Add this to Strapi Cloud env vars
+          user: env('MAILERSEND_SMTP_USER'),
+          pass: env('MAILERSEND_SMTP_PASS'),
         },
       },
       settings: {
