@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "program_sessions",
+  "info": {
+    "singularName": "program-session",
+    "pluralName": "program-sessions",
+    "displayName": "Program Session"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "session_name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
