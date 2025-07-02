@@ -49,7 +49,7 @@ module.exports = {
           </ul>
           <h3>Application Content:</h3>
           <p><strong>Previous Experience:</strong><br>${result.previous_experience || 'None provided'}</p>
-          <p><strong>Interest Reason:</strong><br>${result.interest_reason}</p>
+          <p><strong>Interest Reason:</strong><br>${result.interest_reason || 'None provided'}</p>
           <p><strong>Preferred Dates:</strong> ${result.preferred_dates || 'None specified'}</p>
           <p><a href="https://lively-cactus-806ba46df7.strapiapp.com/admin/content-manager/collection-types/api::student-application.student-application">View in Admin Panel</a></p>
         `,
