@@ -550,9 +550,14 @@ export interface ApiProgramSessionProgramSession
     draftAndPublish: true;
   };
   attributes: {
+    capacity: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<20>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    current_applications: Schema.Attribute.Integer &
+      Schema.Attribute.DefaultTo<0>;
+    description: Schema.Attribute.Blocks;
+    end_date: Schema.Attribute.Date & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -561,6 +566,10 @@ export interface ApiProgramSessionProgramSession
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     session_name: Schema.Attribute.String & Schema.Attribute.Required;
+    session_status: Schema.Attribute.Enumeration<
+      ['Open', 'Full', 'Closed', 'Completed']
+    >;
+    start_date: Schema.Attribute.Date & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -579,27 +588,50 @@ export interface ApiStudentApplicationStudentApplication
     draftAndPublish: true;
   };
   attributes: {
+    application_status: Schema.Attribute.Enumeration<
+      ['Pending', 'Under Review', 'Accepted', 'Rejected', 'Waitlisted']
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    date_of_birth: Schema.Attribute.Date;
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    emergency_contact_name: Schema.Attribute.String & Schema.Attribute.Required;
+    emergency_contact_phone: Schema.Attribute.String &
+      Schema.Attribute.Required;
+    interest_reason: Schema.Attribute.Blocks;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::student-application.student-application'
     > &
       Schema.Attribute.Private;
+    notes: Schema.Attribute.RichText;
     phone: Schema.Attribute.String;
+    preferred_dates: Schema.Attribute.String;
+    previous_experience: Schema.Attribute.Blocks;
     publishedAt: Schema.Attribute.DateTime;
     school_name: Schema.Attribute.String & Schema.Attribute.Required;
     student_name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    submitted_at: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    year_level: Schema.Attribute.Enumeration<
+      [
+        'Year 10',
+        'Year 11',
+        'Year 12',
+        'Year 13',
+        'University 1st Year',
+        'University 2nd Year',
+        'Other',
+      ]
+    >;
   };
 }
 

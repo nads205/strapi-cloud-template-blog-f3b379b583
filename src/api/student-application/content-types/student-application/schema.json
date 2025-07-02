@@ -27,6 +27,54 @@
     "school_name": {
       "type": "string",
       "required": true
+    },
+    "year_level": {
+      "type": "enumeration",
+      "enum": [
+        "Year 10",
+        "Year 11",
+        "Year 12",
+        "Year 13",
+        "University 1st Year",
+        "University 2nd Year",
+        "Other"
+      ]
+    },
+    "date_of_birth": {
+      "type": "date"
+    },
+    "previous_experience": {
+      "type": "blocks"
+    },
+    "interest_reason": {
+      "type": "blocks"
+    },
+    "preferred_dates": {
+      "type": "string"
+    },
+    "emergency_contact_name": {
+      "type": "string",
+      "required": true
+    },
+    "emergency_contact_phone": {
+      "type": "string",
+      "required": true
+    },
+    "application_status": {
+      "type": "enumeration",
+      "enum": [
+        "Pending",
+        "Under Review",
+        "Accepted",
+        "Rejected",
+        "Waitlisted"
+      ]
+    },
+    "submitted_at": {
+      "type": "datetime"
+    },
+    "notes": {
+      "type": "richtext"
     }
   }
 }
