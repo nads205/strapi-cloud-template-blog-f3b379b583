@@ -22,6 +22,7 @@ module.exports = [
       origin: [
         'https://students.plaincc.com',
         'https://jolly-meadow-065c3c003-4.westeurope.6.azurestaticapps.net',
+        'https://jolly-meadow-065c3c003-5.westeurope.6.azurestaticapps.net',
         'http://localhost:3000',
         'http://localhost:1337',
         'https://strapi.plaincc.com'
