@@ -134,7 +134,7 @@ module.exports = {
       await strapi.entityService.create('api::student-application.student-application', {
         data: {
           student_name: `EMAIL FAILED - ${result.student_name}`,
-          email: 'admin@plaincc.com',
+          email: 'naadir@plaincc.co.uk',
           school_name: 'System Alert',
           interest_reason: `Email sending failed for application ${result.id}: ${error.message}`,
           application_status: 'Pending'
