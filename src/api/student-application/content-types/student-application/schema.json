@@ -45,7 +45,7 @@
       "type": "date"
     },
     "previous_experience": {
-      "type": "blocks"
+      "type": "text"
     },
     "interest_reason": {
       "type": "text",

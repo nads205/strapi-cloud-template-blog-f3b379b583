@@ -611,7 +611,7 @@ export interface ApiStudentApplicationStudentApplication
     notes: Schema.Attribute.RichText;
     phone: Schema.Attribute.String;
     preferred_dates: Schema.Attribute.String;
-    previous_experience: Schema.Attribute.Blocks;
+    previous_experience: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     school_name: Schema.Attribute.String & Schema.Attribute.Required;
     student_name: Schema.Attribute.String &
