@@ -601,7 +601,7 @@ export interface ApiStudentApplicationStudentApplication
     emergency_contact_name: Schema.Attribute.String & Schema.Attribute.Required;
     emergency_contact_phone: Schema.Attribute.String &
       Schema.Attribute.Required;
-    interest_reason: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    interest_reason: Schema.Attribute.Text & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

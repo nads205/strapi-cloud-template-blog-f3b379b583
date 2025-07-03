@@ -48,7 +48,7 @@
       "type": "blocks"
     },
     "interest_reason": {
-      "type": "blocks",
+      "type": "text",
       "required": true
     },
     "preferred_dates": {
