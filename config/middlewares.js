@@ -1,5 +1,22 @@
 module.exports = [
   'strapi::errors',
+  // Add request logging middleware
+  {
+    name: 'global::request-logger',
+    config: {},
+    async resolve() {
+      return async (ctx, next) => {
+        if (ctx.path.includes('/student-applications') && ctx.method === 'POST') {
+          const requestId = Math.random().toString(36).substring(2, 15);
+          console.log(`🌐 REQUEST ${requestId}: ${ctx.method} ${ctx.path}`);
+          console.log(`🌐 Headers:`, ctx.headers);
+          console.log(`🌐 Body:`, ctx.request.body);
+          console.log(`🌐 Timestamp:`, new Date().toISOString());
+        }
+        await next();
+      };
+    },
+  },
   {
     name: 'strapi::cors',
     config: {
