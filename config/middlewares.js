@@ -1,20 +1,5 @@
 module.exports = [
   'strapi::errors',
-  
-  // Custom request logger middleware
-  (config, { strapi }) => {
-    return async (ctx, next) => {
-      if (ctx.path.includes('/student-applications') && ctx.method === 'POST') {
-        const requestId = Math.random().toString(36).substring(2, 15);
-        console.log(`🌐 REQUEST ${requestId}: ${ctx.method} ${ctx.path}`);
-        console.log(`🌐 Headers:`, JSON.stringify(ctx.headers, null, 2));
-        console.log(`🌐 Body:`, JSON.stringify(ctx.request.body, null, 2));
-        console.log(`🌐 Timestamp:`, new Date().toISOString());
-      }
-      await next();
-    };
-  },
-  
   {
     name: 'strapi::security',
     config: {
