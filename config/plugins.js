@@ -12,7 +12,7 @@ module.exports = ({ env }) => ({
         },
       },
       settings: {
-        defaultFrom: env('MAILERSEND_FROM_EMAIL', 'applications@plaincc.com'),
+        defaultFrom: env('MAILERSEND_FROM_EMAIL', 'applications@students.plaincc.com'),
         defaultReplyTo: env('MAILERSEND_REPLY_TO', 'noreply@plaincc.com'),
       },
     },
