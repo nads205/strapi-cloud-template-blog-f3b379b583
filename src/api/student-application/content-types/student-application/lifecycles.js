@@ -59,7 +59,7 @@ module.exports = {
 
       // Send notification email to admin
       await strapi.plugins['email'].services.email.send({
-        to: 'your-admin-email@plaincc.com', // Replace with your actual email
+        to: 'naadir@plaincc.co.uk', // Replace with your actual email
         subject: `New Application - ${result.student_name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
