@@ -631,7 +631,8 @@ export interface ApiStudentApplicationStudentApplication
         'University 2nd Year',
         'Other',
       ]
-    >;
+    > &
+      Schema.Attribute.Required;
   };
 }
 

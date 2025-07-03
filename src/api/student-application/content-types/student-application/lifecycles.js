@@ -3,7 +3,6 @@ module.exports = {
     const { result } = event;
 
     console.log('New student application created:', result.student_name);
-
     try {
       // Send welcome email to student
       await strapi.plugins['email'].services.email.send({

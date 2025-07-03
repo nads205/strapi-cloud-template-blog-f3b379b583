@@ -30,6 +30,7 @@
     },
     "year_level": {
       "type": "enumeration",
+      "required": true,
       "enum": [
         "Year 10",
         "Year 11",
