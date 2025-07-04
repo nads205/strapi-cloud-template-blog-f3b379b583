@@ -84,7 +84,7 @@ module.exports = {
 
                 <h3 style="color: #1e40af;">Next Steps:</h3>
                 <ol>
-                  <li>We'll review your application within <strong>soon.</strong></li>
+                  <li>We'll review your application <strong>shortly.</strong></li>
                   <li>You'll receive a decision via email</li>
                   <li>If accepted, you'll receive program details and preparation materials</li>
                   <li>The program includes daily sessions with industry professionals</li>
