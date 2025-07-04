@@ -1,3 +1,5 @@
+const twilio = require('twilio');
+
 // Track recent email sends to prevent duplicates
 const recentEmails = new Map();
 const EMAIL_COOLDOWN = 60000; // 1 minute cooldown
