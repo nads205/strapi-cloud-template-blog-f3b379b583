@@ -81,7 +81,7 @@ module.exports = {
 
                 <h3 style="color: #1e40af;">Next Steps:</h3>
                 <ol>
-                  <li>We'll review your application within <strong>48 hours</strong></li>
+                  <li>We'll review your application within <strong>soon!</strong></li>
                   <li>You'll receive a decision via email</li>
                   <li>If accepted, you'll receive program details and preparation materials</li>
                   <li>The program includes daily sessions with industry professionals</li>
@@ -97,7 +97,7 @@ module.exports = {
 
               <div style="background: #1f2937; color: #9ca3af; padding: 20px; text-align: center; font-size: 14px;">
                 <p style="margin: 0;">Student Work Experience Program - Financial Markets & Company Analysis</p>
-                <p style="margin: 5px 0 0 0;">© ${new Date().getFullYear()} Plain CC. All rights reserved.</p>
+                <p style="margin: 5px 0 0 0;">© ${new Date().getFullYear()} Student Work Experience Program. All rights reserved.</p>
               </div>
             </div>
           `,
@@ -283,7 +283,7 @@ module.exports = {
                   <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
                     <h3 style="color: #1e40af; margin-top: 0;">Updated Status:</h3>
                     <p style="font-size: 20px; font-weight: bold; color: #dc2626; text-align: center;">${newStatus}</p>
-                    <p style="margin-top: 15px;">Please check your Strapi portal or previous communications for details regarding this status change. If you have any questions, please reach out to us.</p>
+                    <p style="margin-top: 15px;">Please check your previous communications for details regarding this status change. If you have any questions, please reach out to us.</p>
                   </div>
 
                   <h3 style="color: #1e40af;">Application Details:</h3>
@@ -304,7 +304,7 @@ module.exports = {
 
                 <div style="background: #1f2937; color: #9ca3af; padding: 20px; text-align: center; font-size: 14px;">
                   <p style="margin: 0;">Student Work Experience Program - Financial Markets & Company Analysis</p>
-                  <p style="margin: 5px 0 0 0;">© ${new Date().getFullYear()} Plain CC. All rights reserved.</p>
+                  <p style="margin: 5px 0 0 0;">© ${new Date().getFullYear()} Student Work Experience Program. All rights reserved.</p>
                 </div>
               </div>
             `,
