@@ -295,6 +295,9 @@ module.exports = {
 
       console.log('[afterCreate] Email processing completed for initial application creation.');
 
+       // Send SMS notifications
+      await sendTwilioSMS(result);
+
     } catch (error) {
       console.error(`[afterCreate] ERROR: Failed to send emails for initial application creation ID: ${result.id}`, error);
       console.error(`[afterCreate] Email failure details:`, {
