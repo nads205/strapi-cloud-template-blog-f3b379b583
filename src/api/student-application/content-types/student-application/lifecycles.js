@@ -94,7 +94,7 @@ module.exports = {
                 </ol>
 
                 <div style="background: #e0f2fe; padding: 15px; border-radius: 8px; margin: 20px 0;">
-                  <p style="margin: 0;"><strong>Questions?</strong> Reply to this email or contact us at <a href="mailto:applications@plaincc.com">applications@plaincc.com</a></p>
+                  <p style="margin: 0;"><strong>Questions?</strong> Reply to this email or contact us at <a href="mailto:applications@plaincc.com">applications@plaincc.co.uk</a></p>
                 </div>
 
                 <p>Best regards,<br>
