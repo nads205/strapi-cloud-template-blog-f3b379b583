@@ -26,6 +26,94 @@ function canSendEmail(key) {
   return true;
 }
 
+// Track recent SMS to prevent duplicates
+const recentSMS = new Map();
+const SMS_COOLDOWN = 60000; // 1 minute cooldown
+
+function canSendSMS(key) {
+  const now = Date.now();
+  const lastSent = recentSMS.get(key);
+  
+  if (lastSent && (now - lastSent) < SMS_COOLDOWN) {
+    console.log(`SMS blocked - too recent. Key: ${key}`);
+    return false;
+  }
+  
+  recentSMS.set(key, now);
+  
+  // Clean up old entries
+  for (const [k, v] of recentSMS.entries()) {
+    if (now - v > 120000) {
+      recentSMS.delete(k);
+    }
+  }
+  
+  return true;
+}
+
+async function sendTwilioSMS(application) {
+  if (!process.env.TWILIO_ACCOUNT_SID || !process.env.TWILIO_AUTH_TOKEN) {
+    console.log('⚠️ Twilio not configured, skipping SMS');
+    return;
+  }
+  
+  try {
+    const client = twilio(
+      process.env.TWILIO_ACCOUNT_SID,
+      process.env.TWILIO_AUTH_TOKEN
+    );
+    
+    // SMS to student (if phone provided)
+    if (application.phone) {
+      const studentSMSKey = `student-sms-${application.id}-${application.phone}`;
+      
+      if (canSendSMS(studentSMSKey)) {
+        const studentMessage = `Hi ${application.student_name}! 🎓 Your application for our Student Work Experience Program has been received. Application ID: #${application.id}. We'll review it and get back to you within 48 hours. Thanks for applying! - PlainCC Team`;
+        
+        await client.messages.create({
+          body: studentMessage,
+          from: process.env.TWILIO_PHONE_NUMBER,
+          to: application.phone
+        });
+        
+        console.log(`✅ Student SMS sent to: ${application.phone}`);
+      } else {
+        console.log(`🚫 Student SMS blocked (duplicate): ${application.phone}`);
+      }
+    } else {
+      console.log(`ℹ️ No phone number provided for ${application.student_name}`);
+    }
+    
+    // SMS to admin
+    if (process.env.ADMIN_PHONE_NUMBER) {
+      const adminSMSKey = `admin-sms-${application.id}`;
+      
+      if (canSendSMS(adminSMSKey)) {
+        const adminMessage = `🚨 New application #${application.id} from ${application.student_name} (${application.school_name}, ${application.year_level || 'Year not specified'}). Email: ${application.email}`;
+        
+        await client.messages.create({
+          body: adminMessage,
+          from: process.env.TWILIO_PHONE_NUMBER,
+          to: process.env.ADMIN_PHONE_NUMBER
+        });
+        
+        console.log(`✅ Admin SMS sent`);
+      } else {
+        console.log(`🚫 Admin SMS blocked (duplicate) for application: ${application.id}`);
+      }
+    }
+    
+  } catch (error) {
+    console.error('❌ Twilio SMS sending failed:', error);
+    
+    // Log specific error details
+    if (error.code) {
+      console.error(`Twilio Error Code: ${error.code} - ${error.message}`);
+    }
+  }
+}
+
+
 module.exports = {
   async afterCreate(event) {
     const { result } = event;
