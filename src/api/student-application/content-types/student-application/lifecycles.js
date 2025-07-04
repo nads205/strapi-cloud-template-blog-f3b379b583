@@ -48,7 +48,10 @@ module.exports = {
     const adminEmailKey = `admin-${result.documentId || result.id}-created`;
 
     // Determine submission date (use submitted_at if available, otherwise createdAt)
-    const submissionDate = result.submitted_at ? new Date(result.submitted_at).toLocaleString('en-GB') : new Date(result.createdAt).toLocaleString('en-GB');
+    // FIX: Explicitly set timeZone to 'Europe/London' for consistent display.
+    const submissionDate = result.submitted_at
+      ? new Date(result.submitted_at).toLocaleString('en-GB', { timeZone: 'Europe/London' })
+      : new Date(result.createdAt).toLocaleString('en-GB', { timeZone: 'Europe/London' });
 
     try {
       // Send welcome email to student (with deduplication)
@@ -260,7 +263,10 @@ module.exports = {
     console.log(`[afterUpdate] oldStatus !== newStatus: ${oldStatus !== newStatus}`);
 
     // Determine submission date (use submitted_at if available, otherwise createdAt)
-    const submissionDate = result.submitted_at ? new Date(result.submitted_at).toLocaleString('en-GB') : new Date(result.createdAt).toLocaleString('en-GB');
+    // FIX: Explicitly set timeZone to 'Europe/London' for consistent display.
+    const submissionDate = result.submitted_at
+      ? new Date(result.submitted_at).toLocaleString('en-GB', { timeZone: 'Europe/London' })
+      : new Date(result.createdAt).toLocaleString('en-GB', { timeZone: 'Europe/London' });
 
     if (oldStatus !== newStatus) {
       console.log(`[afterUpdate] CONDITION MET: Application status for ID ${result.id} changed from '${oldStatus}' to '${newStatus}'. Proceeding with email checks.`);
