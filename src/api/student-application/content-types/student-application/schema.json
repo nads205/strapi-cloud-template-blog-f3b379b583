@@ -7,7 +7,7 @@
     "displayName": "Student Application"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -64,6 +64,7 @@
     },
     "application_status": {
       "type": "enumeration",
+      "default": "Pending",
       "enum": [
         "Pending",
         "Under Review",

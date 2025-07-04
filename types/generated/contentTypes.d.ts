@@ -585,12 +585,13 @@ export interface ApiStudentApplicationStudentApplication
     singularName: 'student-application';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     application_status: Schema.Attribute.Enumeration<
       ['Pending', 'Under Review', 'Accepted', 'Rejected', 'Waitlisted']
-    >;
+    > &
+      Schema.Attribute.DefaultTo<'Pending'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
