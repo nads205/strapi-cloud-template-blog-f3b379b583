@@ -618,7 +618,7 @@ export interface ApiStudentApplicationStudentApplication
     student_name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    submitted_at: Schema.Attribute.DateTime;
+    submitted_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

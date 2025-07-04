@@ -47,6 +47,9 @@ module.exports = {
     const studentEmailKey = `student-${result.documentId || result.id}-created`;
     const adminEmailKey = `admin-${result.documentId || result.id}-created`;
 
+    // Determine submission date (use submitted_at if available, otherwise createdAt)
+    const submissionDate = result.submitted_at ? new Date(result.submitted_at).toLocaleString('en-GB') : new Date(result.createdAt).toLocaleString('en-GB');
+
     try {
       // Send welcome email to student (with deduplication)
       console.log(`[afterCreate] Checking canSendEmail for student (creation) with key: '${studentEmailKey}'`);
@@ -74,14 +77,14 @@ module.exports = {
                     <li><strong>Name:</strong> ${result.student_name}</li>
                     <li><strong>School:</strong> ${result.school_name}</li>
                     <li><strong>Year Level:</strong> ${result.year_level || 'Not specified'}</li>
-                    <li><strong>Submission Date:</strong> ${new Date().toLocaleDateString('en-GB')}</li>
+                    <li><strong>Submission Date:</strong> ${submissionDate}</li>
                     <li><strong>Application ID:</strong> #${result.id}</li>
                   </ul>
                 </div>
 
                 <h3 style="color: #1e40af;">Next Steps:</h3>
                 <ol>
-                  <li>We'll review your application within <strong>soon!</strong></li>
+                  <li>We'll review your application within <strong>soon</strong></li>
                   <li>You'll receive a decision via email</li>
                   <li>If accepted, you'll receive program details and preparation materials</li>
                   <li>The program includes daily sessions with industry professionals</li>
@@ -117,7 +120,7 @@ module.exports = {
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
               <div style="background: #dc2626; padding: 20px; text-align: center;">
                 <h1 style="color: white; margin: 0;">🚨 New Student Application #${result.id}</h1>
-                <p style="color: #fecaca; margin: 5px 0 0 0;">Submitted: ${new Date().toLocaleString('en-GB')}</p>
+                <p style="color: #fecaca; margin: 5px 0 0 0;">Submitted: ${submissionDate}</p>
               </div>
 
               <div style="padding: 20px; background: #ffffff;">
@@ -173,6 +176,11 @@ module.exports = {
                 <div style="background: #f9fafb; padding: 15px; border-radius: 8px; margin: 10px 0;">
                   <h4 style="margin-top: 0;">Preferred Dates:</h4>
                   <p style="margin-bottom: 0;">${result.preferred_dates || 'None specified'}</p>
+                </div>
+                
+                <div style="background: #f9fafb; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                  <h4 style="margin-top: 0;">Notes:</h4>
+                  <p style="margin-bottom: 0; white-space: pre-wrap;">${result.notes || 'None provided'}</p>
                 </div>
 
                 <div style="text-align: center; margin: 30px 0;">
@@ -251,6 +259,9 @@ module.exports = {
     console.log(`[afterUpdate] Comparison -> Old status: '${oldStatus}', New status: '${newStatus}'`);
     console.log(`[afterUpdate] oldStatus !== newStatus: ${oldStatus !== newStatus}`);
 
+    // Determine submission date (use submitted_at if available, otherwise createdAt)
+    const submissionDate = result.submitted_at ? new Date(result.submitted_at).toLocaleString('en-GB') : new Date(result.createdAt).toLocaleString('en-GB');
+
     if (oldStatus !== newStatus) {
       console.log(`[afterUpdate] CONDITION MET: Application status for ID ${result.id} changed from '${oldStatus}' to '${newStatus}'. Proceeding with email checks.`);
 
@@ -260,7 +271,7 @@ module.exports = {
       const adminEmailKey = `admin-${result.documentId || result.id}-status-change-${newStatus}`;
 
       try {
-        // Send welcome email to student (with deduplication)
+        // Send student email (reverted to original content without notes/submission date in this email)
         console.log(`[afterUpdate] Checking canSendEmail for student (status change) with key: '${studentEmailKey}'`);
         if (canSendEmail(studentEmailKey)) {
           await strapi.plugins['email'].services.email.send({
@@ -369,6 +380,10 @@ module.exports = {
                       <td style="padding: 10px; font-weight: bold;">Status:</td>
                       <td style="padding: 10px;"><span style="background: #fef3c7; color: #92400e; padding: 4px 8px; border-radius: 4px;">${result.application_status || 'Pending'}</span></td>
                   </tr>
+                  <tr style="border-bottom: 1px solid #e5e7eb;">
+                      <td style="padding: 10px; font-weight: bold;">Submission Date:</td>
+                      <td style="padding: 10px;">${submissionDate}</td>
+                  </tr>
                   </table>
 
                   <h3 style="color: #dc2626;">Application Content</h3>
@@ -386,6 +401,11 @@ module.exports = {
                   <div style="background: #f9fafb; padding: 15px; border-radius: 8px; margin: 10px 0;">
                       <h4 style="margin-top: 0;">Preferred Dates:</h4>
                       <p style="margin-bottom: 0;">${result.preferred_dates || 'None specified'}</p>
+                  </div>
+                  
+                  <div style="background: #f9fafb; padding: 15px; border-radius: 8px; margin: 10px 0;">
+                      <h4 style="margin-top: 0;">Notes:</h4>
+                      <p style="margin-bottom: 0; white-space: pre-wrap;">${result.notes || 'None provided'}</p>
                   </div>
 
                   <div style="text-align: center; margin: 30px 0;">
