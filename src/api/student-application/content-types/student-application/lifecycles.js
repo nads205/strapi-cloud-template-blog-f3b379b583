@@ -70,7 +70,7 @@ async function sendTwilioSMS(application) {
       const studentSMSKey = `student-sms-${application.id}-${application.phone}`;
       
       if (canSendSMS(studentSMSKey)) {
-        const studentMessage = `Hi ${application.student_name}! 🎓 Your application for our Student Work Experience Program has been received. Application ID: #${application.id}. We'll review it and get back to you within 48 hours. Thanks for applying! - PlainCC Team`;
+        const studentMessage = `Hi ${application.student_name}! 🎓 Your application for our Student Work Experience Program has been received. Application ID: #${application.id}. We'll review it and get back to you soon. Thanks for applying!`;
         
         await client.messages.create({
           body: studentMessage,
