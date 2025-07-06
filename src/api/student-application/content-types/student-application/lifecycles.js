@@ -187,11 +187,11 @@ module.exports = {
                 </div>
 
                 <div style="text-align: center; margin: 30px 0;">
-                  <a href="${process.env.SITE_URL}/admin/content-manager/collection-types/api::student-application.student-application/${result.documentId}"
+                  <a href="https://https://students.api.plaincc.com/admin/content-manager/collection-types/api::student-application.student-application/${result.documentId}"
                      style="background: #dc2626; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; margin-right: 10px;">
                      📊 View Application #${result.id}
                   </a>
-                  <a href="${process.env.SITE_URL}/admin/content-manager/collection-types/api::student-application.student-application"
+                  <a href="https://https://students.api.plaincc.com/admin/content-manager/collection-types/api::student-application.student-application"
                      style="background: #059669; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">
                      📋 All Applications
                   </a>
