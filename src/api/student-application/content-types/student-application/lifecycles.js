@@ -117,7 +117,7 @@ module.exports = {
       console.log(`[afterCreate] Checking canSendEmail for admin (creation) with key: '${adminEmailKey}'`);
       if (canSendEmail(adminEmailKey)) {
         await strapi.plugins['email'].services.email.send({
-          to: 'applications@plaincc.co.uk, M.a.ali2@gmail.com',
+          to: 'applications@plaincc.co.uk, cvboosters@gmail.com',
           subject: `New Application #${result.id} - ${result.student_name}`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -335,7 +335,7 @@ module.exports = {
         console.log(`[afterUpdate] Checking canSendEmail for admin (status change) with key: '${adminEmailKey}'`);
         if (canSendEmail(adminEmailKey)) {
           await strapi.plugins['email'].services.email.send({
-            to: 'applications@plaincc.co.uk, M.a.ali2@gmail.com',
+            to: 'applications@plaincc.co.uk, cvboosters@gmail.com',
             subject: `Application Status Change - #${result.id} (${result.student_name})`,
             html: `
               <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
