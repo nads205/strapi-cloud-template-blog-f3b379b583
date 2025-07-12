@@ -8,15 +8,31 @@
     "draftAndPublish": false
   },
   "attributes": {
+    "full_name": {
+      "type": "string",
+      "required": true
+    },
     "email": {
       "type": "email",
       "required": true
+    },
+    "year_level": {
+      "type": "string"
+    },
+    "school_or_university": {
+      "type": "string"
     },
     "interest_level": {
       "type": "string"
     },
     "additional_comments": {
       "type": "text"
+    },
+    "status": {
+      "type": "string"
+    },
+    "submitted_at": {
+      "type": "datetime"
     }
   }
 }
