@@ -1,0 +1,22 @@
+{
+  "collectionName": "waitlists",
+  "info": {
+    "name": "Waitlist",
+    "description": "Waitlist for future program sessions"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "interest_level": {
+      "type": "string"
+    },
+    "additional_comments": {
+      "type": "text"
+    }
+  }
+}
