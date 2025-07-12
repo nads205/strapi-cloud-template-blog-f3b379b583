@@ -1,8 +1,9 @@
 {
   "collectionName": "waitlists",
   "info": {
-    "name": "Waitlist",
-    "description": "Waitlist for future program sessions"
+    "singularName": "waitlist",
+    "pluralName": "waitlists",
+    "displayName": "Waitlist"
   },
   "options": {
     "draftAndPublish": false
