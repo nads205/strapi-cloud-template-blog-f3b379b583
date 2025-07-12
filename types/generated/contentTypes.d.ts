@@ -637,6 +637,41 @@ export interface ApiStudentApplicationStudentApplication
   };
 }
 
+export interface ApiWaitlistWaitlist extends Struct.CollectionTypeSchema {
+  collectionName: 'waitlists';
+  info: {
+    displayName: 'Waitlist';
+    pluralName: 'waitlists';
+    singularName: 'waitlist';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    additional_comments: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    full_name: Schema.Attribute.String & Schema.Attribute.Required;
+    interest_level: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::waitlist.waitlist'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    school_or_university: Schema.Attribute.String;
+    status: Schema.Attribute.String;
+    submitted_at: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    year_level: Schema.Attribute.String;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1153,6 +1188,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::program-session.program-session': ApiProgramSessionProgramSession;
       'api::student-application.student-application': ApiStudentApplicationStudentApplication;
+      'api::waitlist.waitlist': ApiWaitlistWaitlist;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
