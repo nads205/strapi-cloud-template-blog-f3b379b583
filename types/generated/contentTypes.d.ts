@@ -658,7 +658,9 @@ export interface ApiWaitlistWaitlist extends Struct.CollectionTypeSchema {
     full_name: Schema.Attribute.String & Schema.Attribute.Required;
     interest_level: Schema.Attribute.Enumeration<
       ['Summer 2025', 'Autumn 2025', 'Spring 2026', 'Summer 2026', 'Any time']
-    >;
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Summer 2026'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

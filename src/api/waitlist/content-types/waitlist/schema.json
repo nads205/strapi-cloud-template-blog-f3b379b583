@@ -39,6 +39,8 @@
     },
     "interest_level": {
       "type": "enumeration",
+      "required": true,
+      "default": "Summer 2026",
       "enum": [
         "Summer 2025",
         "Autumn 2025",
