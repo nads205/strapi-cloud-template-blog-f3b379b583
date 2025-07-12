@@ -1,4 +1,5 @@
 {
+  "kind": "collectionType",
   "collectionName": "waitlists",
   "info": {
     "singularName": "waitlist",
@@ -8,6 +9,7 @@
   "options": {
     "draftAndPublish": false
   },
+  "pluginOptions": {},
   "attributes": {
     "full_name": {
       "type": "string",
@@ -15,16 +17,35 @@
     },
     "email": {
       "type": "email",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "year_level": {
-      "type": "string"
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Year 10",
+        "Year 11",
+        "Year 12",
+        "Year 13",
+        "University 1st Year",
+        "University 2nd Year",
+        "University 3rd Year",
+        "Other"
+      ]
     },
     "school_or_university": {
       "type": "string"
     },
     "interest_level": {
-      "type": "string"
+      "type": "enumeration",
+      "enum": [
+        "Summer 2025",
+        "Autumn 2025",
+        "Spring 2026",
+        "Summer 2026",
+        "Any time"
+      ]
     },
     "additional_comments": {
       "type": "text"
@@ -33,7 +54,8 @@
       "type": "string"
     },
     "submitted_at": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     }
   }
 }

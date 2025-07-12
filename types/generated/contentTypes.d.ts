@@ -652,9 +652,13 @@ export interface ApiWaitlistWaitlist extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    email: Schema.Attribute.Email &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     full_name: Schema.Attribute.String & Schema.Attribute.Required;
-    interest_level: Schema.Attribute.String;
+    interest_level: Schema.Attribute.Enumeration<
+      ['Summer 2025', 'Autumn 2025', 'Spring 2026', 'Summer 2026', 'Any time']
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -664,11 +668,23 @@ export interface ApiWaitlistWaitlist extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     school_or_university: Schema.Attribute.String;
     status: Schema.Attribute.String;
-    submitted_at: Schema.Attribute.DateTime;
+    submitted_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    year_level: Schema.Attribute.String;
+    year_level: Schema.Attribute.Enumeration<
+      [
+        'Year 10',
+        'Year 11',
+        'Year 12',
+        'Year 13',
+        'University 1st Year',
+        'University 2nd Year',
+        'University 3rd Year',
+        'Other',
+      ]
+    > &
+      Schema.Attribute.Required;
   };
 }
 
