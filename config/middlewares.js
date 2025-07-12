@@ -25,6 +25,7 @@ module.exports = [
         'https://jolly-meadow-065c3c003-5.westeurope.6.azurestaticapps.net',
         'http://localhost:3000',
         'http://localhost:1337',
+        'https://jolly-meadow-065c3c003-16.westeurope.6.azurestaticapps.net',
         process.env.SITE_URL 
       ],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
